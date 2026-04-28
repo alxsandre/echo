@@ -1,4 +1,4 @@
-'use client'
+"use client"
 
 interface WaveformProps {
   waves: number[]
@@ -31,7 +31,7 @@ export function Waveform({ waves, playing, progress = 0, small }: WaveformProps)
             width={barW}
             height={bh}
             rx={barW / 2}
-            fill={isPast ? 'var(--accent)' : 'currentColor'}
+            fill={isPast ? "var(--accent)" : "currentColor"}
             opacity={isPast ? 1 : isCurrent ? 1 : 0.28}
             style={
               isCurrent

@@ -2,40 +2,40 @@
 
 /* ── Design tokens ──────────────────────────────────────────────────────── */
 :root {
-  --bg:              oklch(10% 0.015 55);
-  --bg2:             oklch(14% 0.015 55);
-  --bg3:             oklch(18% 0.016 55);
-  --border:          oklch(22% 0.012 55);
-  --text:            oklch(90% 0.01 70);
-  --text-muted:      oklch(55% 0.01 70);
-  --accent:          oklch(72% 0.14 72);
-  --accent-dim:      oklch(72% 0.14 72 / 0.15);
-  --bg-nav:          oklch(10% 0.015 55 / 0.92);
+  --bg: oklch(10% 0.015 55);
+  --bg2: oklch(14% 0.015 55);
+  --bg3: oklch(18% 0.016 55);
+  --border: oklch(22% 0.012 55);
+  --text: oklch(90% 0.01 70);
+  --text-muted: oklch(55% 0.01 70);
+  --accent: oklch(72% 0.14 72);
+  --accent-dim: oklch(72% 0.14 72 / 0.15);
+  --bg-nav: oklch(10% 0.015 55 / 0.92);
 }
 
 [data-theme="light"] {
-  --bg:         oklch(97% 0.008 70);
-  --bg2:        oklch(94% 0.008 70);
-  --bg3:        oklch(91% 0.008 70);
-  --border:     oklch(85% 0.008 70);
-  --text:       oklch(18% 0.01 55);
+  --bg: oklch(97% 0.008 70);
+  --bg2: oklch(94% 0.008 70);
+  --bg3: oklch(91% 0.008 70);
+  --border: oklch(85% 0.008 70);
+  --text: oklch(18% 0.01 55);
   --text-muted: oklch(50% 0.01 55);
-  --bg-nav:     oklch(97% 0.008 70 / 0.92);
+  --bg-nav: oklch(97% 0.008 70 / 0.92);
 }
 
 /* ── Tailwind theme bridge ──────────────────────────────────────────────── */
 @theme inline {
   --font-display: var(--font-jakarta), system-ui, sans-serif;
-  --font-ui:      var(--font-jakarta), system-ui, sans-serif;
+  --font-ui: var(--font-jakarta), system-ui, sans-serif;
 
-  --color-bg:          var(--bg);
-  --color-bg2:         var(--bg2);
-  --color-bg3:         var(--bg3);
-  --color-border:      var(--border);
-  --color-text:        var(--text);
-  --color-muted:       var(--text-muted);
-  --color-accent:      var(--accent);
-  --color-accent-dim:  var(--accent-dim);
+  --color-bg: var(--bg);
+  --color-bg2: var(--bg2);
+  --color-bg3: var(--bg3);
+  --color-border: var(--border);
+  --color-text: var(--text);
+  --color-muted: var(--text-muted);
+  --color-accent: var(--accent);
+  --color-accent-dim: var(--accent-dim);
 
   --radius-card: 12px;
 
@@ -48,7 +48,11 @@
 }
 
 /* ── Base ───────────────────────────────────────────────────────────────── */
-*, *::before, *::after { box-sizing: border-box; }
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
 
 html {
   background: var(--bg);
@@ -65,7 +69,7 @@ body {
 
 /* Grain overlay */
 body::before {
-  content: '';
+  content: "";
   position: fixed;
   inset: 0;
   z-index: 1000;
@@ -76,27 +80,54 @@ body::before {
 }
 
 /* Scrollbar */
-::-webkit-scrollbar { width: 4px; }
-::-webkit-scrollbar-track { background: transparent; }
-::-webkit-scrollbar-thumb { background: var(--border); border-radius: 4px; }
+::-webkit-scrollbar {
+  width: 4px;
+}
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+::-webkit-scrollbar-thumb {
+  background: var(--border);
+  border-radius: 4px;
+}
 
 /* ── Keyframes ──────────────────────────────────────────────────────────── */
 @keyframes fadeUp {
-  from { opacity: 0; transform: translateY(16px); }
-  to   { opacity: 1; transform: translateY(0); }
+  from {
+    opacity: 0;
+    transform: translateY(16px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
 
 @keyframes fadeIn {
-  from { opacity: 0; }
-  to   { opacity: 1; }
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
 }
 
 @keyframes pulse {
-  0%, 100% { opacity: 0.4; }
-  50%       { opacity: 1; }
+  0%,
+  100% {
+    opacity: 0.4;
+  }
+  50% {
+    opacity: 1;
+  }
 }
 
 @keyframes waveAnim {
-  0%, 100% { transform: scaleY(0.3); }
-  50%       { transform: scaleY(1); }
+  0%,
+  100% {
+    transform: scaleY(0.3);
+  }
+  50% {
+    transform: scaleY(1);
+  }
 }

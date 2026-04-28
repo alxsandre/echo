@@ -1,12 +1,12 @@
-'use client'
+"use client"
 
-import { useState } from 'react'
-import { PlayButton } from '@/components/atoms/PlayButton'
-import { Waveform } from '@/components/atoms/Waveform'
-import { Avatar } from '@/components/atoms/Avatar'
-import { HeartIcon, ChatIcon, ShareIcon } from '@/components/atoms/Icon'
-import { useAudioProgress } from '@/hooks/useAudioProgress'
-import type { FeedEntry } from '@/types'
+import { useState } from "react"
+import { PlayButton } from "@/components/atoms/PlayButton"
+import { Waveform } from "@/components/atoms/Waveform"
+import { Avatar } from "@/components/atoms/Avatar"
+import { HeartIcon, ChatIcon, ShareIcon } from "@/components/atoms/Icon"
+import { useAudioProgress } from "@/hooks/useAudioProgress"
+import type { FeedEntry } from "@/types"
 
 interface FeedItemProps {
   item: FeedEntry
@@ -21,30 +21,34 @@ export function FeedItem({ item, playing, onPlay, index }: FeedItemProps) {
 
   return (
     <article
-      className="bg-bg2 border border-border rounded-card p-[18px_20px] animate-fade-up"
+      className="bg-bg2 border-border rounded-card animate-fade-up border p-[18px_20px]"
       style={{ animationDelay: `${index * 0.08}s` }}
     >
       {/* Header */}
-      <div className="flex items-center gap-2.5 mb-3.5">
+      <div className="mb-3.5 flex items-center gap-2.5">
         <Avatar initials={item.avatar} size="md" color={item.albumColor} />
         <div>
-          <div className="text-[13px] font-medium text-text">{item.user}</div>
-          <div className="text-[11px] text-muted">{item.location} · {item.ago}</div>
+          <div className="text-text text-[13px] font-medium">{item.user}</div>
+          <div className="text-muted text-[11px]">
+            {item.location} · {item.ago}
+          </div>
         </div>
       </div>
 
       {/* Sound block */}
       <div
         onClick={onPlay}
-        className={`bg-bg3 rounded-lg p-[12px_14px] cursor-pointer hover:opacity-85 transition-opacity duration-150 ${item.note ? 'mb-3' : 'mb-3.5'}`}
+        className={`bg-bg3 cursor-pointer rounded-lg p-[12px_14px] transition-opacity duration-150 hover:opacity-85 ${item.note ? "mb-3" : "mb-3.5"}`}
       >
         <div className="flex items-center gap-2.5">
           <PlayButton playing={playing} />
-          <div className="flex-1 min-w-0">
-            <div className={`text-sm font-display font-normal ${playing ? 'text-accent' : 'text-text'}`}>
+          <div className="min-w-0 flex-1">
+            <div
+              className={`font-display text-sm font-normal ${playing ? "text-accent" : "text-text"}`}
+            >
               {item.soundTitle}
             </div>
-            <div className="text-[11px] text-muted mt-0.5">{item.duration}</div>
+            <div className="text-muted mt-0.5 text-[11px]">{item.duration}</div>
           </div>
           <Waveform waves={item.waves} playing={playing} progress={progress} />
         </div>
@@ -52,23 +56,23 @@ export function FeedItem({ item, playing, onPlay, index }: FeedItemProps) {
 
       {/* Note */}
       {item.note && (
-        <p className="text-[13px] text-muted leading-[1.6] italic mb-3.5">{item.note}</p>
+        <p className="text-muted mb-3.5 text-[13px] leading-[1.6] italic">{item.note}</p>
       )}
 
       {/* Actions */}
-      <div className="flex gap-4 items-center">
+      <div className="flex items-center gap-4">
         <button
-          onClick={() => setLiked(l => !l)}
-          className={`flex items-center gap-1.5 text-xs cursor-pointer bg-transparent border-none p-0 transition-colors duration-150 ${liked ? 'text-accent' : 'text-muted'}`}
+          onClick={() => setLiked((l) => !l)}
+          className={`flex cursor-pointer items-center gap-1.5 border-none bg-transparent p-0 text-xs transition-colors duration-150 ${liked ? "text-accent" : "text-muted"}`}
         >
           <HeartIcon filled={liked} />
           {item.likes + (liked ? 1 : 0)}
         </button>
-        <button className="flex items-center gap-1.5 text-xs text-muted cursor-pointer bg-transparent border-none p-0">
+        <button className="text-muted flex cursor-pointer items-center gap-1.5 border-none bg-transparent p-0 text-xs">
           <ChatIcon />
           {item.comments}
         </button>
-        <button className="flex items-center gap-1.5 text-xs text-muted cursor-pointer bg-transparent border-none p-0 ml-auto">
+        <button className="text-muted ml-auto flex cursor-pointer items-center gap-1.5 border-none bg-transparent p-0 text-xs">
           <ShareIcon />
           Partager
         </button>

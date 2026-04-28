@@ -1,9 +1,9 @@
-'use client'
+"use client"
 
-import { PlayButton } from '@/components/atoms/PlayButton'
-import { Waveform } from '@/components/atoms/Waveform'
-import { useAudioProgress } from '@/hooks/useAudioProgress'
-import type { Sound } from '@/types'
+import { PlayButton } from "@/components/atoms/PlayButton"
+import { Waveform } from "@/components/atoms/Waveform"
+import { useAudioProgress } from "@/hooks/useAudioProgress"
+import type { Sound } from "@/types"
 
 interface SoundRowProps {
   sound: Sound
@@ -17,22 +17,24 @@ export function SoundRow({ sound, playing, onPlay }: SoundRowProps) {
   return (
     <div
       onClick={onPlay}
-      className="flex items-center gap-3 py-2.5 border-b border-border cursor-pointer hover:opacity-80 transition-opacity duration-150"
+      className="border-border flex cursor-pointer items-center gap-3 border-b py-2.5 transition-opacity duration-150 hover:opacity-80"
     >
       <PlayButton playing={playing} size="sm" />
 
-      <div className="flex-1 min-w-0">
-        <div className={`font-medium text-[13px] truncate ${playing ? 'text-accent' : 'text-text'}`}>
+      <div className="min-w-0 flex-1">
+        <div
+          className={`truncate text-[13px] font-medium ${playing ? "text-accent" : "text-text"}`}
+        >
           {sound.title}
         </div>
-        <div className="text-[11px] text-muted mt-0.5">
+        <div className="text-muted mt-0.5 text-[11px]">
           📍 {sound.location} · {sound.date}
         </div>
       </div>
 
       <Waveform waves={sound.waves} playing={playing} progress={progress} small />
 
-      <div className="text-[11px] text-muted shrink-0">{sound.duration}</div>
+      <div className="text-muted shrink-0 text-[11px]">{sound.duration}</div>
     </div>
   )
 }

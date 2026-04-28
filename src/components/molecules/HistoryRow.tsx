@@ -1,7 +1,7 @@
-'use client'
+"use client"
 
-import { PlayButton } from '@/components/atoms/PlayButton'
-import type { HistoryItem } from '@/types'
+import { PlayButton } from "@/components/atoms/PlayButton"
+import type { HistoryItem } from "@/types"
 
 interface HistoryRowProps {
   item: HistoryItem
@@ -14,26 +14,25 @@ export function HistoryRow({ item, playing, onPlay, index }: HistoryRowProps) {
   return (
     <div
       onClick={onPlay}
-      className="flex items-center gap-3 py-2.5 border-b border-border cursor-pointer hover:opacity-75 transition-opacity duration-150 animate-fade-up"
+      className="border-border animate-fade-up flex cursor-pointer items-center gap-3 border-b py-2.5 transition-opacity duration-150 hover:opacity-75"
       style={{ animationDelay: `${0.3 + index * 0.07}s` }}
     >
-      <div
-        className="size-1 rounded-full shrink-0"
-        style={{ background: item.albumColor }}
-      />
+      <div className="size-1 shrink-0 rounded-full" style={{ background: item.albumColor }} />
 
-      <div className="flex-1 min-w-0">
-        <div className={`text-[13px] font-medium truncate ${playing ? 'text-accent' : 'text-text'}`}>
+      <div className="min-w-0 flex-1">
+        <div
+          className={`truncate text-[13px] font-medium ${playing ? "text-accent" : "text-text"}`}
+        >
           {item.soundTitle}
         </div>
-        <div className="text-[11px] text-muted mt-0.5">
+        <div className="text-muted mt-0.5 text-[11px]">
           {item.albumTitle} · {item.location}
         </div>
       </div>
 
-      <div className="flex flex-col items-end gap-0.5 shrink-0">
-        <span className="text-[11px] text-muted">{item.duration}</span>
-        <span className="text-[10px] text-muted opacity-70">{item.ago}</span>
+      <div className="flex shrink-0 flex-col items-end gap-0.5">
+        <span className="text-muted text-[11px]">{item.duration}</span>
+        <span className="text-muted text-[10px] opacity-70">{item.ago}</span>
       </div>
 
       <PlayButton playing={playing} size="sm" />
