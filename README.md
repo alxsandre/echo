@@ -30,3 +30,5 @@ Open [http://localhost:3000](http://localhost:3000).
 ---
 
 *Built through vibe coding with [Claude Code](https://claude.ai/code).*
+
+© 2026 Alexandre Foret — All rights reserved. This project is publicly visible for portfolio purposes only and may not be copied, redistributed, or used commercially without explicit permission.
