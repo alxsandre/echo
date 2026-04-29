@@ -131,3 +131,13 @@ body::before {
     transform: scaleY(1);
   }
 }
+
+@keyframes shimmer {
+  0%,
+  100% {
+    opacity: 0.18;
+  }
+  50% {
+    opacity: 0.38;
+  }
+}
